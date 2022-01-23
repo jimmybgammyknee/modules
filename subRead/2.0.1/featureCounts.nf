@@ -34,9 +34,8 @@ process featureCountsStr {
     label 'process_low'
 
     input:
-    tuple val(sample_id), 
-          file(bam), file(bai)
     file gtf
+    tuple val(sample_id), file(bam), file(bai)
     val outdir
     val opt_args
 

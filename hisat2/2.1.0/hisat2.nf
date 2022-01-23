@@ -7,7 +7,7 @@ process HISAT2 {
 
     publishDir "${outdir}/Hisat2", mode: 'copy'
     stageInMode 'copy' // Link read files + hisat2 index. Save on I/O
-    // conda "$projectDir/conda.yml"
+    label 'process_highCpuLowMem'
 
     input:
     tuple val(sample_id), file(reads)
@@ -15,9 +15,9 @@ process HISAT2 {
     val outdir
 
     output:
-    tuple sample_id,
-        file("${sample_id}.hisat2.bam"),
-        file("${sample_id}.hisat2.bam.bai")
+    tuple val(sample_id),
+          file("${sample_id}.hisat2.sorted.bam"),
+          file("${sample_id}.hisat2.sorted.bam.bai"), emit: bams_ch
 
     script:
     """
