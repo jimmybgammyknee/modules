@@ -5,13 +5,14 @@ process HISAT2 {
 
     memory '20 GB'
 
-    publishDir "${params.outdir}/Hisat2", mode: 'copy'
+    publishDir "${outdir}/Hisat2", mode: 'copy'
     stageInMode 'copy' // Link read files + hisat2 index. Save on I/O
     // conda "$projectDir/conda.yml"
 
     input:
+    tuple val(sample_id), file(reads)
     path hisat2_idx_dir
-    tuple sample_id, file(read1), file(read2)
+    val outdir
 
     output:
     tuple sample_id,
@@ -23,12 +24,20 @@ process HISAT2 {
     INDEX=`find -L ${hisat2_idx_dir} -name "*.1.ht2" | sed 's/.1.ht2//'`
 
     # hisat2 alignment
-    hisat2 -p ${task.cpus} \\
-         --rg-id "\"@RG\\tID:${sample_id}\\tSM:${sample_id}\\tPL:ILLUMINA\\tLB:${sample_id}\\tPU:LIB1\"" \\
-         -x \${INDEX} -1 ${read1} -2 ${read2} | \\
-            samtools sort --threads ${task.cpus} -m 2G - > ${sample_id}.hisat2.bam
+    hisat2 \\
+        --time --dta \\
+        --rna-strandness RF \\
+        --threads ${task.cpus} \\
+        -k 1 \\
+        --no-mixed \\
+        --met-file ${sample_id}_hisat_metrics.txt \\
+        --rg-id "\"@RG\\tID:${sample_id}\\tSM:${sample_id}\\tPL:ILLUMINA\\tLB:${sample_id}\\tPU:LIB1\"" \\
+        -x \${INDEX} \\
+        -1 ${reads[0]} -2 ${reads[1]} | \\
+            samtools view -bhS - > ${sample_id}.hisat2.bam
     
-    # index with sambamba
-    samtools index -@ ${task.cpus} ${sample_id}.hisat2.bam
+    # sort and index with samtools
+    samtools sort -@ ${task.cpus} -m 2G -o ${sample_id}.hisat2.sorted.bam ${sample_id}.hisat2.bam
+    samtools index -@ ${task.cpus} ${sample_id}.hisat2.sorted.bam
     """
 }
