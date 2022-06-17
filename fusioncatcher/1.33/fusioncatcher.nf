@@ -21,6 +21,6 @@ process fusioncatcher_v133 {
         -o \${PWD} \
         --skip-blat
 			
-	mv final-list_candidate-fusion-genes.txt ${filename}_fusioncatcher_v133.txt
+	mv final-list_candidate-fusion-genes.hg19.txt ${filename}_fusioncatcher_v133.txt
     """
 }
