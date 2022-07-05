@@ -11,6 +11,7 @@ process fusioncatcher_v133 {
      
     output:
     file "${filename}_fusioncatcher_v133.txt"
+    file "${filename}_fusioncatcher_v133_hg38.txt"
 
     script:
     """
@@ -22,6 +23,6 @@ process fusioncatcher_v133 {
         --skip-blat
 			
 	mv final-list_candidate-fusion-genes.hg19.txt ${filename}_fusioncatcher_v133.txt
-    	mv final-list_candidate-fusion-genes.txt ${filename}_fusioncatcher_v133_hg38.txt
+    mv final-list_candidate-fusion-genes.txt ${filename}_fusioncatcher_v133_hg38.txt
     """
 }
