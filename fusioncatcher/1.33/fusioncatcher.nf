@@ -12,6 +12,7 @@ process fusioncatcher_v133 {
     output:
     file "${filename}_fusioncatcher_v133.txt"
     file "${filename}_fusioncatcher_v133_hg38.txt"
+    file "${filename}_fusioncatcher_v133_sequences.txt.zip"
 
     script:
     """
@@ -24,5 +25,6 @@ process fusioncatcher_v133 {
 			
 	mv final-list_candidate-fusion-genes.hg19.txt ${filename}_fusioncatcher_v133.txt
     mv final-list_candidate-fusion-genes.txt ${filename}_fusioncatcher_v133_hg38.txt
+    mv final-list_candidate-fusion-genes_sequences.txt.zip ${filename}_fusioncatcher_v133_sequences.txt.zip
     """
 }
