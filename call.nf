@@ -6,9 +6,9 @@ process call {
 
     input:
     tuple val(filename), val(group), val(sample), val(outdir),
-    path "${filename}_*.aug.pg"
-    path "${filename}_*.snarls"
-    path "${filename}_*.pack"
+    path ("${filename}_*.aug.pg"),
+    path ("${filename}_*.snarls")
+    path ("${filename}_*.pack")
     val outdir
 
     output:

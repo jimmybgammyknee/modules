@@ -7,7 +7,7 @@ process convertToAnnoVarSNP {
     input:
     tuple val(filename), val(group), val(sample), val(outdir),
     path ("${filename}.passed.converted.snp.vcf.gz"),
-    path ("${filename}.passed.converted.snp.vcf.gz.tbi)"
+    path ("${filename}.passed.converted.snp.vcf.gz.tbi")
     val ANNODB
 
     output:

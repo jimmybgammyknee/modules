@@ -21,3 +21,5 @@ process snarls {
     }
     """
 }
+
+ch_snarls.into { ch_snarls_pack; ch_snarls_call }

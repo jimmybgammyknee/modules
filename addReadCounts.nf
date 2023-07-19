@@ -6,7 +6,7 @@ process addReadCounts {
 
 
     // Join channels on matching keys
-    ch_annovarINDEL.join(ch_annovarSNP, by: [0,1,2]).set{ results_Annovar }
+    //ch_annovarINDEL.join(ch_annovarSNP, by: [0,1,2]).set{ results_Annovar }
 
     input:
     tuple val(filename), val(group), val(sample), val(outdir),
@@ -15,7 +15,7 @@ process addReadCounts {
    
     output:
     tuple val(filename), val(group), val(sample), val(outdir),
-    path "${filename}_*.tsv"
+    path ("${filename}_*.tsv")
 
     script:
     """
