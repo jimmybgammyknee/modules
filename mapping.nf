@@ -5,16 +5,17 @@ process mapping {
     label 'process_vg'
 
     input:
-	tuple val(filename), val(group), val(sample), val(path), file(reads)
-	val XG
-	val GCSA
-	val DIST
-	val SNARLS
-	val PATHS
-	val outdir
+		tuple val(filename), val(group), val(sample), val(path), file(reads)
+		val XG
+		val GCSA
+		val DIST
+		val SNARLS
+		val PATHS
+		val outdir
 
     output:
-	tuple val(filename), val(group), val(sample), val(outdir), path("${filename}_mapped.gamp"), emit:ch_mapping
+		tuple val(filename), val(group), val(sample), val(outdir),
+		path("${filename}_mapped.gamp"), emit:ch_mapping
 
     script:
     """

@@ -5,12 +5,12 @@ process snarls {
     label 'process_vg'
 
     input:
-    tuple val(filename), val(group), val(sample), val(outdir),
-    path ("${filename}_*.aug.pg")
+        tuple val(filename), val(group), val(sample), val(outdir),
+        path ("${filename}_*.aug.pg")
 
     output:
-    tuple val(filename), val(group), val(sample), val(outdir),
-    path ("${filename}_*.snarls"), emit: ch_snarls
+        tuple val(filename), val(group), val(sample), val(outdir),
+        path ("${filename}_*.snarls"), emit: ch_snarls
 
     script:
     """
@@ -22,4 +22,4 @@ process snarls {
     """
 }
 
-ch_snarls.into { ch_snarls_pack; ch_snarls_call }
+//ch_snarls.into { ch_snarls_pack; ch_snarls_call }

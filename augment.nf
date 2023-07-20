@@ -31,4 +31,4 @@ process augment {
     """
 }
 
-ch_augment.into { ch_augment_snarls; ch_augment_call }
+//ch_augment.into { ch_augment_snarls; ch_augment_call }

@@ -5,12 +5,12 @@ process prepGamp {
     label 'process_vg'
 
     input:
-	tuple val(filename), val(group), val(sample), path("${filename}_mapped.gamp"), val (outdir)
+	    tuple val(filename), val(group), val(sample), path("${filename}_mapped.gamp"), val (outdir)
 
     output:
-    tuple val(filename), val(group), val(sample), val(outdir),
-	path ("${filename}_mapped.sorted.gam.gai"),
-	path ("${filename}_mapped.sorted.gam"), emit: ch_gamp
+        tuple val(filename), val(group), val(sample), val(outdir),
+	    path ("${filename}_mapped.sorted.gam.gai"),
+	    path ("${filename}_mapped.sorted.gam"), emit: ch_gamp
 
     script:
     """

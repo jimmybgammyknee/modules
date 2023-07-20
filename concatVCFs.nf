@@ -5,13 +5,12 @@ process concatVCFs {
     label 'process_bcftools'
 
     input:
-    tuple val(filename), val(group), val(sample), val(outdir),
-    path "${filename}_*_variants.vcf"
-    val outdir
+        tuple val(filename), val(group), val(sample), val(outdir),
+        path "${filename}_*_variants.vcf"
 
     output:
-    tuple val(filename), val(group), val(sample), val(outdir),
-    path ("${filename}_variants_all.vcf"), emit: ch_concatVCFs
+        tuple val(filename), val(group), val(sample), val(outdir),
+        path ("${filename}_variants_all.vcf"), emit: ch_concatVCFs
 
     shell:
     '''

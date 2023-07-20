@@ -5,14 +5,13 @@ process filterVCF {
     label 'process_bcftools'
 
     input:
-    tuple val(filename), val(group), val(sample), val(path)
-    path "${filename}_variants_all.vcf"
-    val outdir
+        tuple val(filename), val(group), val(sample), val(outdir),
+        path "${filename}_variants_all.vcf"
 
     output:
-    tuple val(filename), val(group), val(sample), val(path)
-    path ("${filename}_variants_all_passed.vcf"),
-    path ("${filename}_variants_all_passed.vcf.gz", emit: ch_filterVCF)
+        tuple val(filename), val(group), val(sample), val(outdir)
+        path ("${filename}_variants_all_passed.vcf"),
+        path ("${filename}_variants_all_passed.vcf.gz", emit: ch_filterVCF)
 
     shell:
     '''

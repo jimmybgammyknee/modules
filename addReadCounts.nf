@@ -9,13 +9,13 @@ process addReadCounts {
     //ch_annovarINDEL.join(ch_annovarSNP, by: [0,1,2]).set{ results_Annovar }
 
     input:
-    tuple val(filename), val(group), val(sample), val(outdir),
-    path ("${filename}_INDEL_multianno.txt"),
-    path ("${filename}_SNP_multianno.txt")
+        tuple val(filename), val(group), val(sample), val(outdir),
+        path ("${filename}_INDEL_multianno.txt"),
+        path ("${filename}_SNP_multianno.txt")
    
     output:
-    tuple val(filename), val(group), val(sample), val(outdir),
-    path ("${filename}_*.tsv")
+        tuple val(filename), val(group), val(sample), val(outdir),
+        path ("${filename}_*.tsv")
 
     script:
     """

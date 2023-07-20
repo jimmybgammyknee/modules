@@ -5,14 +5,14 @@ process convertToAnnoVarSNP {
     label 'process_high'
 
     input:
-    tuple val(filename), val(group), val(sample), val(outdir),
-    path ("${filename}.passed.converted.snp.vcf.gz"),
-    path ("${filename}.passed.converted.snp.vcf.gz.tbi")
-    val ANNODB
+        tuple val(filename), val(group), val(sample), val(outdir),
+        path ("${filename}.passed.converted.snp.vcf.gz"),
+        path ("${filename}.passed.converted.snp.vcf.gz.tbi")
+        val ANNODB
 
     output:
-    tuple val(filename), val(group), val(sample), val(outdir),
-    path ("${filename}_SNP_multianno.txt"), emit: ch_annovarSNP
+        tuple val(filename), val(group), val(sample), val(outdir),
+        path ("${filename}_SNP_multianno.txt"), emit: ch_annovarSNP
 
     script:
     """

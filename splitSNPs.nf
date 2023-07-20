@@ -5,19 +5,19 @@ process splitSNP {
     label 'gatkEnv'
 
     input:
-    tuple val(filename), val(group), val(sample), val(outdir),
-    path ("${filename}_variants_all_passed.vcf"),
-    path ("${filename}_variants_all_passed.vcf.gz")
-    val REF
-    val IDX
-    val DICT
+        tuple val(filename), val(group), val(sample), val(outdir),
+        path ("${filename}_variants_all_passed.vcf"),
+        path ("${filename}_variants_all_passed.vcf.gz")
+        val REF
+        val INDEX
+        val DICT
 
     output:
-    tuple val(filename), val(group), val(sample), val(outdir),
-    path ("${filename}.passed.converted.snp.vcf.gz"),
-    path ("${filename}.passed.converted.snp.vcf.gz.tbi"), emit: ch_SNPS
-    path ("${filename}.converted.snp.vcf.gz")
-    path ("${filename}.converted.snp.vcf.gz.tbi")
+        tuple val(filename), val(group), val(sample), val(outdir),
+        path ("${filename}.passed.converted.snp.vcf.gz"),
+        path ("${filename}.passed.converted.snp.vcf.gz.tbi"), emit: ch_SNPS
+        path ("${filename}.converted.snp.vcf.gz")
+        path ("${filename}.converted.snp.vcf.gz.tbi")
 
 
     script:

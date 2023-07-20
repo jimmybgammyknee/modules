@@ -5,13 +5,13 @@ process pack {
     label 'process_vg'
 
     input:
-    tuple val(filename), val(group), val(sample), val(outdir),
-    path ("${filename}_*.aug.pg"),
-    path ("${filename}_*.aug.gam")
+        tuple val(filename), val(group), val(sample), val(outdir),
+        path ("${filename}_*.aug.pg"),
+        path ("${filename}_*.aug.gam")
 
     output:
-    tuple val(filename), val(group), val(sample), val(outdir),
-    path ("${filename}_*.pack"), emit: ch_pack
+        tuple val(filename), val(group), val(sample), val(outdir),
+        path ("${filename}_*.pack"), emit: ch_pack
 
     script:
     """

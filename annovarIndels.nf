@@ -5,14 +5,14 @@ process convertToAnnoVarINDEL {
     label 'process_high'
 
     input:
-    tuple val(filename), val(group), val(sample), val(outdir),
-    path ("${filename}.passed.converted.indels.vcf.gz"),
-    path ("${filename}.passed.converted.indels.vcf.gz.tbi")
-    val ANNODB
+        tuple val(filename), val(group), val(sample), val(outdir),
+        path ("${filename}.passed.converted.indels.vcf.gz"),
+        path ("${filename}.passed.converted.indels.vcf.gz.tbi")
+        val ANNODB
 
     output:
-    tuple val(filename), val(group), val(sample), val(outdir),
-    path ("${filename}_INDEL_multianno.txt"), emit: ch_annovarINDEL
+        tuple val(filename), val(group), val(sample), val(outdir),
+        path ("${filename}_INDEL_multianno.txt"), emit: ch_annovarINDEL
 
     script:
     """
