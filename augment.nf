@@ -1,7 +1,7 @@
 process augment {
 
     tag { "Augment - ${filename}" }
-    publishDir "${outdir}/${group}/${filename}/Augment", mode: 'copy'
+    publishDir "${params.outdir}/${group}/${filename}/Augment", mode: 'copy'
     label 'process_vg'
 
     input:

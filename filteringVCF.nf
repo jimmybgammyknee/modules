@@ -1,7 +1,7 @@
 process filterVCF {
 
     tag { "FilterVCFs - ${filename}" }
-    publishDir "${outdir}/${group}/${filename}/Variants/filtered", mode: 'copy'
+    publishDir "${params.outdir}/${group}/${filename}/Variants/filtered", mode: 'copy'
     label 'process_bcftools'
 
     input:

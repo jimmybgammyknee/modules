@@ -1,7 +1,7 @@
 process prepGamp {
 
     tag { "prepGamp - ${filename}" }
-    publishDir "${outdir}/${group}/${filename}/Mapped", mode: 'copy'
+    publishDir "${params.outdir}/${group}/${filename}/Mapped", mode: 'copy'
     label 'process_vg'
 
     input:

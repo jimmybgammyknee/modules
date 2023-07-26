@@ -1,7 +1,7 @@
 process convertToAnnoVarINDEL {
 
     tag { "Convert to AnnoVar INDEL - ${filename}" }
-    publishDir "${outdir}/${group}/${filename}/Variants/AnnoVar", mode: 'copy'
+    publishDir "${params.outdir}/${group}/${filename}/Variants/AnnoVar", mode: 'copy'
     label 'process_high'
 
     input:

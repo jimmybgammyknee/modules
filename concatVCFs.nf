@@ -1,7 +1,7 @@
 process concatVCFs {
 
     tag { "ConcatVCFs - ${filename}" }
-    publishDir "${outdir}/${group}/${filename}/Variants", mode: 'copy'
+    publishDir "${params.outdir}/${group}/${filename}/Variants", mode: 'copy'
     label 'process_bcftools'
 
     input:

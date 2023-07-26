@@ -1,7 +1,7 @@
 process convertToAnnoVarSNP {
 
     tag { "Convert to AnnoVar SNP - ${filename}" }
-    publishDir "${outdir}/${group}/${filename}/Variants/AnnoVar", mode: 'copy'
+    publishDir "${params.outdir}/${group}/${filename}/Variants/AnnoVar", mode: 'copy'
     label 'process_high'
 
     input:

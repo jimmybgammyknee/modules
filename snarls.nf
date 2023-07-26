@@ -1,7 +1,7 @@
 process snarls {
 
     tag { "Snarls - ${filename}" }
-    publishDir "${outdir}/${group}/${filename}/Snarls", mode: 'copy'
+    publishDir "${params.outdir}/${group}/${filename}/Snarls", mode: 'copy'
     label 'process_vg'
 
     input:

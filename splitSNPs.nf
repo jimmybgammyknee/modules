@@ -1,7 +1,7 @@
 process splitSNP {
 
     tag { "split VCF SNPs - ${filename}" }
-    publishDir "${outdir}/${group}/${filename}/Variants/filtered/snps_vcfs", mode: 'copy'
+    publishDir "${params.outdir}/${group}/${filename}/Variants/filtered/snps_vcfs", mode: 'copy'
     label 'gatkEnv'
 
     input:

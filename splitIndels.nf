@@ -1,7 +1,7 @@
 process splitINDEL {
 
     tag { "split VCF indels - ${filename}" }
-    publishDir "${outdir}/${group}/${filename}/Variants/filtered/indel_vcfs", mode: 'copy'
+    publishDir "${params.outdir}/${group}/${filename}/Variants/filtered/indel_vcfs", mode: 'copy'
     label 'gatkEnv'
 
     input:

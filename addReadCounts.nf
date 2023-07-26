@@ -1,7 +1,7 @@
 process addReadCounts {
 
     tag { "VCF to TSV - ${filename}" }
-    publishDir "${outdir}/${group}/${filename}/Variants/AnnoVar", mode: 'copy'
+    publishDir "${params.outdir}/${group}/${filename}/Variants/AnnoVar", mode: 'copy'
     label 'rEnv'
 
 
