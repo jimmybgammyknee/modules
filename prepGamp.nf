@@ -6,11 +6,13 @@ process prepGamp {
 
     input:
 	    tuple val(filename), val(group), val(sample), path("${filename}_mapped.gamp"), val (outdir)
+        val (XG)
 
     output:
         tuple val(filename), val(group), val(sample), val(outdir),
 	    path ("${filename}_mapped.sorted.gam.gai"),
 	    path ("${filename}_mapped.sorted.gam"), emit: ch_gamp
+        path ("${filename}_alignment_statistics.txt")
 
     script:
     """
@@ -26,6 +28,12 @@ process prepGamp {
     vg gamsort \
         -p \
         ${filename}_mapped.gam > ${filename}_mapped.sorted.gam
+
+    # alignment statistics
+    echo "Calculating alignment statistics. Please wait ...";
+    vg stats \
+        -a ${filename}_mapped.sorted.gam \
+        ${XG} > ${filename}_alignment_statistics.txt
 
     # Index sorted gam
     echo "Indexing sorted GAM. Please wait ...";

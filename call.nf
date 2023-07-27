@@ -5,10 +5,9 @@ process call {
     label 'process_vg'
 
     input:
-        tuple val(filename), val(group), val(sample), val(outdir),
-        path ("${filename}_*.aug.pg"),
-        path ("${filename}_*.snarls")
-        path ("${filename}_*.pack")
+        tuple val(filename), val(group), val(sample), val(outdir), path ("${filename}_*.aug.pg")
+        tuple val(filename), val(group), val(sample), val(outdir), path ("${filename}_*.snarls")
+        tuple val(filename), val(group), val(sample), val(outdir), path ("${filename}_*.pack")
 
     output:
         tuple val(filename), val(group), val(sample), val(outdir),
