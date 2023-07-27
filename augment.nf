@@ -15,8 +15,8 @@ process augment {
         path ("${filename}_*.aug.gam"),
         path ("${filename}_*.aug.pg"), emit: ch_augment
 
-    script:
-    """
+    shell:
+    '''
     for i in seq(1, 22) ++ ['X', 'Y', 'MT'] {
     vg augment \
         -pv \
@@ -28,7 +28,7 @@ process augment {
         -Q 5 \
         -A "!{filename}_${i}.aug.gam" > "!{filename}_${i}.aug.pg"
     }
-    """
+    '''
 }
 
 //ch_augment.into { ch_augment_snarls; ch_augment_call }

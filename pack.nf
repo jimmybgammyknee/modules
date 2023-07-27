@@ -13,8 +13,8 @@ process pack {
         tuple val(filename), val(group), val(sample), val(outdir),
         path ("${filename}_*.pack"), emit: ch_pack
 
-    script:
-    """
+    shell:
+    '''
     for i in seq(1, 22) ++ ['X', 'Y', 'MT'] {
         echo "Packing Chr ${i}. Please wait ...";
         vg pack \
@@ -22,5 +22,5 @@ process pack {
             -g !{filename}_${i}.aug.gam \
             -o !{filename}_${i}.pack
     }
-    """
+    '''
 }

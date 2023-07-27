@@ -13,8 +13,8 @@ process call {
         tuple val(filename), val(group), val(sample), val(outdir),
         path ("${filename}_*_variants.vcf"), emit: ch_call
 
-    script:
-    """
+    shell:
+    '''
     for i in seq(1, 22) ++ ['X', 'Y', 'MT'] {
         echo "Calling Chr ${i} variants. Please wait ...";
         vg call \
@@ -23,5 +23,5 @@ process call {
             -k !{filename}_${i}.pack \
             -s !{filename} > !{filename}_${i}_variants.vcf
     }
-    """
+    '''
 }
