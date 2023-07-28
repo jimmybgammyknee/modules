@@ -5,8 +5,7 @@ process augment {
     label 'process_vg'
 
     input:
-        tuple val(filename), val(group), val(sample), val(outdir),
-        path ("${filename}_mapped.sorted.gam.gai"),
+        tuple val(filename), val(group), val(sample), val(outdir), path ("${filename}_mapped.sorted.gam.gai"),
         path ("${filename}_mapped.sorted.gam")
         val CHUNK
 
@@ -30,5 +29,3 @@ process augment {
     }
     '''
 }
-
-//ch_augment.into { ch_augment_snarls; ch_augment_call }
