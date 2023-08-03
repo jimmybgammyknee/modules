@@ -9,10 +9,7 @@ process prepGamp {
         val (XG)
 
     output:
-        tuple val(filename), val(group), val(sample), val(outdir),
-	    path ("${filename}_mapped.sorted.gam.gai"),
-	    path ("${filename}_mapped.sorted.gam"), emit: ch_gamp
-        path ("${filename}_alignment_statistics.txt")
+        tuple val(filename), val(group), val(sample), val(outdir), path ("${filename}_mapped.sorted.gam"), emit: ch_prepGamp
 
     script:
     """

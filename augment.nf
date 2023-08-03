@@ -10,22 +10,21 @@ process augment {
         val CHUNK
 
     output:
-        tuple val(filename), val(group), val(sample), val(outdir),
-        path ("${filename}_*.aug.gam"),
-        path ("${filename}_*.aug.pg"), emit: ch_augment
+        tuple val(filename), val(group), val(sample), val(outdir), path ("${filename}_*.aug.gam"),
+        path ("${filename}_*.aug.pg")
 
     shell:
     '''
-    for i in seq(1, 22) ++ ['X', 'Y', 'MT'] {
+    for i in $(seq -w 01 22; echo X; echo Y; echo MT); do
     vg augment \
         -pv \
-        "!{CHUNK}" \
+        "!{CHUNK}/SplicedGraph_GRCh37_chunk_${i}.pg" \
         "!{filename}_mapped.sorted.gam" \
         -s \
         -m 2 \
         -q 5 \
         -Q 5 \
         -A "!{filename}_${i}.aug.gam" > "!{filename}_${i}.aug.pg"
-    }
+    done
     '''
 }

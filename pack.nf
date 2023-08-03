@@ -5,9 +5,8 @@ process pack {
     label 'process_vg'
 
     input:
-        tuple val(filename), val(group), val(sample), val(outdir),
-        path ("${filename}_*.aug.pg"),
-        path ("${filename}_*.aug.gam")
+        tuple val(filename), val(group), val(sample), val(outdir), path ("${filename}_*.aug.pg")
+        tuple val(filename), val(group), val(sample), val(outdir), path ("${filename}_*.aug.gam")
 
     output:
         tuple val(filename), val(group), val(sample), val(outdir),
@@ -15,12 +14,12 @@ process pack {
 
     shell:
     '''
-    for i in seq(1, 22) ++ ['X', 'Y', 'MT'] {
+    for i in $(seq -w 01 22; echo X; echo Y; echo MT); do
         echo "Packing Chr ${i}. Please wait ...";
         vg pack \
             -x !{filename}_${i}.aug.pg \
             -g !{filename}_${i}.aug.gam \
             -o !{filename}_${i}.pack
-    }
+    done
     '''
 }

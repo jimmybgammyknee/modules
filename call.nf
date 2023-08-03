@@ -15,13 +15,13 @@ process call {
 
     shell:
     '''
-    for i in seq(1, 22) ++ ['X', 'Y', 'MT'] {
+    for i in $(seq -w 01 22; echo X; echo Y; echo MT); do
         echo "Calling Chr ${i} variants. Please wait ...";
         vg call \
             !{filename}_${i}.aug.pg \
             -r !{filename}_${i}.snarls \
             -k !{filename}_${i}.pack \
             -s !{filename} > !{filename}_${i}_variants.vcf
-    }
+    done
     '''
 }
